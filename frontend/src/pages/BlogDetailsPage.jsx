@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { fetchBlogPosts } from '../services/api';
 import { ArrowLeft, User, Calendar, Tag } from 'lucide-react';
 import { ROUTES } from '../routes/routes';
+import SEO from '../components/SEO';
 
 const BlogDetailsPage = () => {
   const { slug } = useParams();
@@ -25,6 +26,11 @@ const BlogDetailsPage = () => {
 
   return (
     <div>
+      <SEO
+        title={`${post.title} | Construction Blog`}
+        description={post.excerpt || post.content?.slice(0, 160)}
+        type="article"
+      />
       <section style={{
         backgroundColor: '#0f172a',
         color: '#ffffff',

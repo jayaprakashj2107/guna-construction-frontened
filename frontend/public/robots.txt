@@ -1,0 +1,14 @@
+# Robots.txt for GUNA CONSTRUCTION
+# https://gunaconstruction.co.in
+
+User-agent: *
+Allow: /
+
+# Disallow private and administrative panels
+Disallow: /admin
+Disallow: /admin/
+Disallow: /adminLogin
+Disallow: /login
+
+# Sitemap location
+Sitemap: https://gunaconstruction.co.in/sitemap.xml

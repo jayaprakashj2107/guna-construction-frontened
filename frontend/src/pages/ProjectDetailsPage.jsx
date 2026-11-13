@@ -4,6 +4,7 @@ import { fetchProjects } from '../services/api';
 import EnquiryForm from '../components/EnquiryForm';
 import { ArrowLeft, MapPin, Calendar, CheckCircle2, Play, Image as ImageIcon, Send } from 'lucide-react';
 import { ROUTES } from '../routes/routes';
+import SEO from '../components/SEO';
 
 const ProjectDetailsPage = () => {
   const { id } = useParams();
@@ -27,6 +28,11 @@ const ProjectDetailsPage = () => {
 
   return (
     <div>
+      <SEO 
+        title={`${project.title} | Projects`}
+        description={project.short_description || project.full_description}
+        image={project.main_image}
+      />
       <section style={{
         backgroundColor: '#0f172a',
         color: '#ffffff',

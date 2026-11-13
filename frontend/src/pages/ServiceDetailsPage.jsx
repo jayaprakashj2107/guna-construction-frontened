@@ -8,6 +8,7 @@ import {
   ArrowRight, Sparkles, Building2, MapPin
 } from 'lucide-react';
 import { ROUTES } from '../routes/routes';
+import SEO from '../components/SEO';
 
 const ServiceDetailsPage = () => {
   const { slug } = useParams();
@@ -60,6 +61,11 @@ const ServiceDetailsPage = () => {
 
   return (
     <div>
+      <SEO 
+        title={`${service.title} in Cheyyur, Tamil Nadu`}
+        description={service.short_description || service.full_description}
+        image={service.image_url}
+      />
       {/* Header Banner */}
       <section style={{
         backgroundColor: '#0f172a',

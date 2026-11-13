@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, useLocation } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { AuthProvider } from './context/AuthContext';
 import { ROUTES } from './routes/routes';
 import AppRoutes from './routes/AppRoutes';
@@ -7,6 +8,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import EnquiryMiniBanner from './components/EnquiryMiniBanner';
 import AutoEnquiryModal from './components/AutoEnquiryModal';
+import SEO from './components/SEO';
 
 // Main layout wrapper to conditionally render navigation bars based on current route
 const MainLayout = () => {
@@ -21,6 +23,9 @@ const MainLayout = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      {/* Dynamic SEO canonical URL and meta injection */}
+      <SEO noindex={isStandalonePortal} />
+
       {!isStandalonePortal && <Navbar />}
       
       <main style={{ flexGrow: 1 }}>
@@ -36,12 +41,16 @@ const MainLayout = () => {
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <MainLayout />
-      </Router>
-    </AuthProvider>
+    <HelmetProvider>
+      <AuthProvider>
+        <Router>
+          <MainLayout />
+        </Router>
+      </AuthProvider>
+    </HelmetProvider>
   );
 }
 
 export default App;
+
+
